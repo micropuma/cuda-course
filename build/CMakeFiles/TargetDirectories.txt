@@ -1,5 +1,0 @@
-/home/douliyang/large/cuda-workspace/cuda-course/build/CMakeFiles/edit_cache.dir
-/home/douliyang/large/cuda-workspace/cuda-course/build/CMakeFiles/rebuild_cache.dir
-/home/douliyang/large/cuda-workspace/cuda-course/build/cuda_reduce_study/CMakeFiles/my_reduce.dir
-/home/douliyang/large/cuda-workspace/cuda-course/build/cuda_reduce_study/CMakeFiles/edit_cache.dir
-/home/douliyang/large/cuda-workspace/cuda-course/build/cuda_reduce_study/CMakeFiles/rebuild_cache.dir
