@@ -90,10 +90,10 @@ int main() {
 
     // 检测结果
     if (check(res, host_output, block_num)) {
-        printf("================== Reduce Baseline ==================\n");
+        printf("================== Reduce No Divergence ==================\n");
         printf("Result is correct!\n");
     } else {
-        printf("================== Reduce Baseline ==================\n");
+        printf("================== Reduce No Divergence ==================\n");
         printf("Result is incorrect!\n");
     }
 
