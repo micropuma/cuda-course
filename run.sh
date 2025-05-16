@@ -13,3 +13,4 @@ cd bin
 ./reduce_baseline
 ./reduce_no_divergence
 ./reduce_no_bank_conflict
+./reduce_add
