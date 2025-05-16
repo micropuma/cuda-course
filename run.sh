@@ -15,3 +15,5 @@ cd bin
 ./reduce_no_bank_conflict
 ./reduce_add
 ./reduce_unroll_warp
+./reduce_complete_unroll
+./reduce_multi_add

@@ -69,3 +69,27 @@ target_link_libraries(reduce_unroll_warp
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_compile_definitions(reduce_unroll_warp PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-G>)
 endif()
+
+# ============ Completely Unroll ============ #
+add_executable(reduce_complete_unroll ReduceCompleteUnroll.cu)
+target_link_libraries(reduce_complete_unroll 
+    PRIVATE 
+    CUDA::cudart      # 运行时库
+    CUDA::cublas      # cublas库
+)
+# debug编译选项
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_compile_definitions(reduce_complete_unroll PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-G>)
+endif()
+
+# ============ Multi Add Version ============ #
+add_executable(reduce_multi_add ReduceMultiAdd.cu)
+target_link_libraries(reduce_multi_add 
+    PRIVATE 
+    CUDA::cudart      # 运行时库
+    CUDA::cublas      # cublas库
+)
+# debug编译选项
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_compile_definitions(reduce_multi_add PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-G>)
+endif()
