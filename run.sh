@@ -14,3 +14,4 @@ cd bin
 ./reduce_no_divergence
 ./reduce_no_bank_conflict
 ./reduce_add
+./reduce_unroll_warp

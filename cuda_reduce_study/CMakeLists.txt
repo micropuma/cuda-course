@@ -57,3 +57,15 @@ target_link_libraries(reduce_add
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_compile_definitions(reduce_add PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-G>)
 endif()
+
+# ============ Unroll Last Warp ============ #
+add_executable(reduce_unroll_warp ReduceUnrollLastWarp.cu)
+target_link_libraries(reduce_unroll_warp 
+    PRIVATE 
+    CUDA::cudart      # 运行时库
+    CUDA::cublas      # cublas库
+)
+# debug编译选项
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_compile_definitions(reduce_unroll_warp PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:-G>)
+endif()
