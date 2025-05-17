@@ -8,7 +8,7 @@
             "name": "CUDA C++: launch",
             "type": "cuda-gdb",
             "request": "launch",
-            "program": "",
+            "program": "/home/douliyang/large/cuda-workspace/cuda-course/build/bin/ReduceShuffle",
         },
         {
            "name": "CUDA C++: launch",
