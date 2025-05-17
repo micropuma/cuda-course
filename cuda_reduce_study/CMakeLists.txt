@@ -38,3 +38,7 @@ target_link_libraries(reduce_complete_unroll PRIVATE CUDA::cudart CUDA::cublas)
 # ============ Multi Add Version ============ #
 add_executable(reduce_multi_add ReduceMultiAdd.cu)
 target_link_libraries(reduce_multi_add PRIVATE CUDA::cudart CUDA::cublas)
+
+# ============ Final Version With Shuffle enabled ============ #
+add_executable(ReduceShuffle ReduceShuffle.cu)
+target_link_libraries(ReduceShuffle PRIVATE CUDA::cudart CUDA::cublas)
