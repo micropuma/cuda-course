@@ -17,3 +17,4 @@ cd bin
 ./reduce_unroll_warp
 ./reduce_complete_unroll
 ./reduce_multi_add
+./ReduceShuffle

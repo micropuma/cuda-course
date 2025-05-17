@@ -8,7 +8,7 @@
             "name": "CUDA C++: launch",
             "type": "cuda-gdb",
             "request": "launch",
-            "program": "/home/douliyang/large/cuda-workspace/cuda-course/build/bin/reduce_unroll_warp",
+            "program": "",
         },
         {
            "name": "CUDA C++: launch",
