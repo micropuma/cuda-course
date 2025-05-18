@@ -6,3 +6,4 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 find_package(CUDAToolkit)
 add_subdirectory(cuda_reduce_study)
+add_subdirectory(cuda_gemm_study)
