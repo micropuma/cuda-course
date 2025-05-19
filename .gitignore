@@ -1,2 +1,5 @@
 build/
 *.cu.*
+*.cache/
+*.o
+*.so
