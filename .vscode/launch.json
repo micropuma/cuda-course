@@ -14,6 +14,13 @@
            "name": "CUDA C++: launch",
             "type": "cuda-gdb",
             "request": "attach", 
-        }
+        },
+        {
+            "name": "CUDA C++: gemm",
+            "type": "cuda-gdb",
+            "request": "launch",
+            "program": "/home/douliyang/large/cuda-workspace/cuda-course/cuda_gemm_study/build/sgemm",
+            "args": ["1"]
+        },
     ]
 }
