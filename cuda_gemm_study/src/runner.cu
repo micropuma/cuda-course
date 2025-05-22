@@ -168,19 +168,21 @@ void run_sgemm_coalesce(int M, int N, int K, float alpha, float *A, float *B,
       <<<gridDim, blockDim>>>(M, N, K, alpha, A, B, beta, C);
 }
 
-// void run_sgemm_shared_mem_block(int M, int N, int K, float alpha, float *A,
-//                                 float *B, float beta, float *C) {
-//   dim3 gridDim(CEIL_DIV(M, 32), CEIL_DIV(N, 32));
-//   dim3 blockDim(32 * 32);
-//   // L1 cache becomes useless, since we access GMEM only via SMEM, so we carve
-//   // out all of L1 to SMEM. This doesn't currently make a difference, since
-//   // occupancy is limited by reg and thread count, but it's good to do anyway.
-//   cudaFuncSetAttribute(sgemm_shared_mem_block<32>,
-//                        cudaFuncAttributePreferredSharedMemoryCarveout,
-//                        cudaSharedmemCarveoutMaxShared);
-//   sgemm_shared_mem_block<32>
-//       <<<gridDim, blockDim>>>(M, N, K, alpha, A, B, beta, C);
-// }
+void run_sgemm_shared_mem_block(int M, int N, int K, float alpha, float *A,
+                                float *B, float beta, float *C) {
+  dim3 gridDim(CEIL_DIV(M, 32), CEIL_DIV(N, 32));
+  dim3 blockDim(32 * 32);
+  // L1 cache becomes useless, since we access GMEM only via SMEM, so we carve
+  // out all of L1 to SMEM. This doesn't currently make a difference, since
+  // occupancy is limited by reg and thread count, but it's good to do anyway.
+  // SM中，cuda的shared memory和L1 cache是共享的，默认是48KB的L1 cache和16KB的shared memory
+  // 这里我们将L1 cache carve out成shared memory，来提升性能，因此目前的shared memory是64KB
+  cudaFuncSetAttribute(sgemm_shared_mem_block<32>,
+                       cudaFuncAttributePreferredSharedMemoryCarveout,
+                       cudaSharedmemCarveoutMaxShared);
+  sgemm_shared_mem_block<32>
+      <<<gridDim, blockDim>>>(M, N, K, alpha, A, B, beta, C);
+}
 
 // void runSgemm1DBlocktiling(int M, int N, int K, float alpha, float *A, float *B,
 //                            float beta, float *C) {
@@ -517,9 +519,9 @@ void run_kernel(int kernel_num, int M, int N, int K, float alpha, float *A,
   case 2:
     run_sgemm_coalesce(M, N, K, alpha, A, B, beta, C);
     break;
-//   case 3:
-//     run_sgemm_shared_mem_block(M, N, K, alpha, A, B, beta, C);
-//     break;
+  case 3:
+    run_sgemm_shared_mem_block(M, N, K, alpha, A, B, beta, C);
+    break;
 //   case 4:
 //     runSgemm1DBlocktiling(M, N, K, alpha, A, B, beta, C);
 //     break;
