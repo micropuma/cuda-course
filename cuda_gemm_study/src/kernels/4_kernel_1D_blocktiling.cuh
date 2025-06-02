@@ -34,6 +34,7 @@ __global__ void sgemm1DBlocktiling(int M, int N, int K, float alpha,
     float threadResults[TM] = {0.0};
 
     for (int i = 0; i < K; i += BK) {
+        // 加载共享内存
         As[innerRowA * BK + innerColA] = A[innerRowA * K + innerColA];
         Bs[innerRowB * BN + innerColB] = B[innerRowB * N + innerColB];
         __syncthreads();
